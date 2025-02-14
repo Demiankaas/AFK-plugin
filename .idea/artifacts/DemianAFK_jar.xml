@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="DemianAFK:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/DemianAFK_jar</output-path>
+    <root id="archive" name="DemianAFK.jar">
+      <element id="module-output" name="DemianAFK" />
+    </root>
+  </artifact>
+</component>

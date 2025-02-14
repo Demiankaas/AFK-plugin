@@ -1,0 +1,21 @@
+messages:
+  afk:
+    title: "§cYou are now AFK!"
+    subtitle: "§cMove to return!"
+    fadeIn: 10
+    stay: 999999
+    fadeOut: 10
+  unafk:
+    title: "§eYou are no longer AFK!"
+    subtitle: "§eYou are no longer in spectator mode."
+    fadeIn: 10
+    stay: 30
+    fadeOut: 10
+  move:
+    title: "§eYou are no longer AFK!"
+    subtitle: "§eYou are no longer in spectator mode."
+    fadeIn: 10
+    stay: 60
+    fadeOut: 10
+
+# MADE BY DEMIAN

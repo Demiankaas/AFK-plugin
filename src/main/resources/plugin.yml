@@ -1,0 +1,7 @@
+name: AfkPlugin
+version: 1.0
+main: me.demian.afkplugin.AfkPlugin
+api-version: 1.20
+commands:
+  afk:
+    description: Manage AFK status
