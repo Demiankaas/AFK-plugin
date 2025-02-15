@@ -1,7 +1,8 @@
 name: AfkPlugin
 version: 1.0
 main: me.demian.afkplugin.AfkPlugin
-api-version: 1.20
+api-version: 1.21
 commands:
   afk:
-    description: Manage AFK status
+    description: Toggle AFK mode, manage auto-AFK, disable/enable auto-AFK for a player, or reload the plugin.
+    usage: /afk [reload | disable <playerName> | enable <playerName> | auto <enable|disable>]

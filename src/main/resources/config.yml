@@ -18,4 +18,18 @@ messages:
     stay: 60
     fadeOut: 10
 
-# MADE BY DEMIAN
+auto-afk:
+  enabled: true
+  timeout: 60  # Timeout in seconds
+
+# List of player names for whom auto-AFK is disabled (persisted across reloads)
+disabled-players: []
+
+# Command messages for auto-AFK toggling (you can change these as needed)
+commands:
+  auto-disable-self: "§cYou have disabled auto-AFK for yourself."
+  auto-enable-self: "§cYou have enabled auto-AFK for yourself."
+  disable-player-success: "§cAuto-AFK disabled for: {player}"
+  enable-player-success: "§cAuto-AFK enabled for: {player}"
+  player-not-disabled: "§cPlayer '{player}' was not disabled."
+  reload-success: "§cAFK plugin config reloaded!"
