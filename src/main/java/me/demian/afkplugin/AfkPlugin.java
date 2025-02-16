@@ -122,6 +122,17 @@ public class AfkPlugin extends JavaPlugin implements Listener, TabCompleter {
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         lastMoveTimes.put(player, System.currentTimeMillis());
+        // Check if the player was persisted as AFK from a previous session and reset them
+        FileConfiguration config = getConfig();
+        List<String> persistedAfk = config.getStringList("afk-players");
+        if (persistedAfk.contains(player.getName())) {
+            player.setGameMode(GameMode.SURVIVAL);
+            persistedAfk.remove(player.getName());
+            config.set("afk-players", persistedAfk);
+            saveConfig();
+            String resetMsg = config.getString("messages.login-reset.message", "§eYour AFK status has been reset upon login.");
+            player.sendMessage(resetMsg);
+        }
     }
 
     @EventHandler
@@ -151,13 +162,12 @@ public class AfkPlugin extends JavaPlugin implements Listener, TabCompleter {
         }
     }
 
-    // Prevent spectator teleport if player is AFK (e.g., trying to TP via number keys in Spectator mode)
+    // Prevent spectator teleport if player is AFK (e.g., trying to TP via spectator mode)
     @EventHandler
     public void onPlayerTeleport(PlayerTeleportEvent event) {
         Player player = event.getPlayer();
         if (afkPlayers.contains(player) && event.getCause() == PlayerTeleportEvent.TeleportCause.SPECTATE) {
             event.setCancelled(true);
-            // Optionally, you can send a message here if needed.
             player.sendMessage(getConfig().getString("messages.tp-restricted.message", "§cYou cannot teleport while AFK."));
             setNotAfk(player, true);
         }
@@ -345,8 +355,7 @@ public class AfkPlugin extends JavaPlugin implements Listener, TabCompleter {
             if ("disable".startsWith(lower)) completions.add("disable");
             if ("enable".startsWith(lower)) completions.add("enable");
             if ("auto".startsWith(lower)) completions.add("auto");
-            // If sender is an admin and the argument does not match any subcommand,
-            // suggest online player names (for /afk <playerName> admin command).
+            // For admin: if no subcommand, suggest online player names.
             if ((sender.hasPermission("afk.admin") || sender.isOp()) &&
                     !(lower.startsWith("reload") || lower.startsWith("disable") || lower.startsWith("enable") || lower.startsWith("auto"))) {
                 for (Player p : Bukkit.getOnlinePlayers()) {
