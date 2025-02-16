@@ -17,6 +17,8 @@ messages:
     fadeIn: 10
     stay: 60
     fadeOut: 10
+  tp-restricted:
+    message: "§cYou cannot teleport while AFK."
 
 auto-afk:
   enabled: true
@@ -25,7 +27,10 @@ auto-afk:
 # List of player names for whom auto-AFK is disabled (persisted across reloads)
 disabled-players: []
 
-# Command messages for auto-AFK toggling (you can change these as needed)
+# List of player names who are AFK (persisted to reset on reload)
+afk-players: []
+
+# Command messages for auto-AFK toggling and admin actions (customizable)
 commands:
   auto-disable-self: "§cYou have disabled auto-AFK for yourself."
   auto-enable-self: "§cYou have enabled auto-AFK for yourself."
@@ -33,3 +38,4 @@ commands:
   enable-player-success: "§cAuto-AFK enabled for: {player}"
   player-not-disabled: "§cPlayer '{player}' was not disabled."
   reload-success: "§cAFK plugin config reloaded!"
+  no-permission: "§cYou do not have permission to use this command."

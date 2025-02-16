@@ -5,4 +5,4 @@ api-version: 1.21
 commands:
   afk:
     description: Toggle AFK mode, manage auto-AFK, disable/enable auto-AFK for a player, or reload the plugin.
-    usage: /afk [reload | disable <playerName> | enable <playerName> | auto <enable|disable>]
+    usage: /afk [reload | disable <playerName> | enable <playerName> | auto <enable|disable> | <playerName>]
