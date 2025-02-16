@@ -19,6 +19,8 @@ messages:
     fadeOut: 10
   tp-restricted:
     message: "§cYou cannot teleport while AFK."
+  login-reset:
+    message: "§eYour AFK status has been reset upon login."
 
 auto-afk:
   enabled: true
@@ -29,6 +31,11 @@ disabled-players: []
 
 # List of player names who are AFK (persisted to reset on reload)
 afk-players: []
+
+combatlog:
+  enabled: true
+  duration: 30  # Duration in seconds during which AFK cannot be toggled after taking damage
+  message: "§cYou cannot go AFK while in combat!"
 
 # Command messages for auto-AFK toggling and admin actions (customizable)
 commands:
